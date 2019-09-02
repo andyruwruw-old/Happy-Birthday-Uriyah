@@ -25,12 +25,18 @@ export default {
   },
   methods: {
     move() {
+      var media = document.getElementById("music");
+      media.volume = .3;
+      const playPromise = media.play();
+      if (playPromise !== null){
+        playPromise.catch(() => { media.play(); })
+      }
       for (let i = 0; i < this.firemen.length; i++)
       {
         this.firemen[i].x += this.firemen[i].speed;
         if (this.firemen[i].x > window.innerWidth)
         {
-          let newFireman = {type: Math.ceil(Math.random() * 9), x: -150, y: Math.random() * window.innerHeight - 50, name: Math.round(Math.random() * 1000), speed: Math.random() * 5, audio: Math.ceil(Math.random() * 10)};
+          let newFireman = {type: Math.ceil(Math.random() * 9), x: -150, y: Math.random() * window.innerHeight - 25, name: Math.round(Math.random() * 1000), speed: Math.random() * 5, audio: Math.ceil(Math.random() * 10)};
           this.firemen.splice(i, 1, newFireman);
         }
       }
