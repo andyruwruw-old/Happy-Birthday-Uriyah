@@ -26,6 +26,7 @@ export default {
   methods: {
     move() {
       var media = document.getElementById("music");
+      console.log("I love you!");
       media.volume = .3;
       const playPromise = media.play();
       if (playPromise !== null){
